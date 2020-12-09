@@ -1,0 +1,265 @@
+/*@import url('https://fonts.googleapis.com/css?family=Roboto');*/
+
+/* Global Styles */
+:root {
+  --primary-color: #1c1c1c;
+  --dark-color: #333333;
+  --light-color: #f4f4f4;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+  /*background: rgb(2,0,36);*/
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: #333;
+  color: #fff;
+
+  background: #6441A5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2a0845, #6441A5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2a0845, #6441A5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  /*background: linear-gradient(90deg, rgba(1,0,36,1) 0%, rgba(66,69,67,1) 33%, rgba(0,212,255,1) 100%);
+ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, 
+                            rgba(66,69,67,1) 33%, 
+                            rgba(0,212,255,1) 100%);*/
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #666;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+/* image styling */
+.image-center { 
+  text-align: center;
+}
+
+/* Utilities 
+  max-width: 1100px;
+*/
+.container {
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--light-color);
+  color: #333;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+}
+
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: #fff;
+  padding: 0.45rem;
+  margin: 0 0.25rem;
+}
+
+.navbar a:hover {
+  color: var(--light-color);
+}
+
+.navbar .welcome span {
+  margin-right: 0.6rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 700px) {
+  .hide-sm {
+    display: none;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Text Styles */
+  .x-large {
+    font-size: 3rem;
+  }
+
+  .large {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  /* Navbar */
+  .navbar {
+    display: block;
+    text-align: center;
+  }
+
+  .navbar ul {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+.tcontainer {
+  display: flex;
+  max-width: 400px;
+  height: 95px;
+  margin: 0 auto;
+}
+
+
+/* button styles */
+.myButton {
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#2dabf9;
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+  font-size:15px;
+
+  padding:1px 8px;
+
+	text-decoration:none;
+  text-shadow:0px 1px 0px #263666;
+  margin: auto;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+/* serach styles */
+.wrapper {
+  position: relative;
+  display: flex;
+  min-width: 100px;
+}
+
+.ts {
+  left: 0;
+  right: 0;
+  width: 550px;
+  padding: 35px;
+  background-color: #ff7575;
+  border-radius: 20px;
+  box-shadow: 0 10px 14px #ff7c7c, 0 0 0 10px #ffffffeb;
+  transform: scale(0.6);
+}
+
+.search {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 25px;
+  width: 50%;
+  padding: 2px 23px 2px 30px;
+  outline: 0;
+  background-color: #f5f5f5;
+}
+
+.search-icon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 14px;
+}
+
+.clear-icon {
+  position: absolute;
+  top: 9px;
+  right: 8px;
+  width: 12px;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.search:hover, .search:focus {
+  border: 1px solid #009688;
+  background-color: white;
+}
+
+/*
+input[type='file'] {
+  display: none;
+}
+*/
+
+.upload {
+  width: 100px;
+  height: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+
+}
+
+.yourBtn {
+  position: relative;
+  width: 150px;
+  padding: 10px;
+  border: 1px dashed #BBB;
+  text-align: center;
+  background-color: #DDD;
+  cursor: pointer;
+}
+
+.box {
+  display: flex;
+  padding: 10px;
+  position: relative;
+  /*background-color: #DDD;*/
+  justify-content: space-between;
+}
+
+.log {
+  display: flex;
+}
