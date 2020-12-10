@@ -20,12 +20,9 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #333;
   color: #fff;
+  background-color: #121212;
 
-  background: #6441A5;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2a0845, #6441A5);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2a0845, #6441A5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
   /*background: linear-gradient(90deg, rgba(1,0,36,1) 0%, rgba(66,69,67,1) 33%, rgba(0,212,255,1) 100%);
@@ -78,7 +75,17 @@ img {
   outline: none;
 }
 
+.record {
+}
+table {
+  border-collapse: collapse;
+}
 
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
 
 /* Navbar */
 .navbar {
@@ -153,7 +160,7 @@ img {
 .myButton {
 	box-shadow:inset 0px -3px 7px 0px #29bbff;
 	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-	background-color:#2dabf9;
+	background-color:#f5f5f5;
 	border-radius:3px;
 	border:1px solid #0b0e07;
 	cursor:pointer;
@@ -167,6 +174,7 @@ img {
   text-shadow:0px 1px 0px #263666;
   margin: auto;
 }
+
 .myButton:hover {
 	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
 	background-color:#0688fa;

@@ -4,39 +4,59 @@ import axios from 'axios';
 
 
 const GetAllusers = () => {
-const [auth, isAuth] = useContext(AuthContext);
-const [userdata, setUserdata] = useState({DAT: []});
+  const [auth] = useContext(AuthContext);
+  const [userdata, setUserdata] = useState({DAT: []});
 
 
-const api = async () => {
-  try {
-    const res = await axios.get(`http://localhost:4000/api/user/users`);
-    setUserdata({DAT: res.data.Items});
-  } catch (err) {
-    console.log('there was an error' + err);
-  }
-}
-
-
-const onSubmit = e => { api(); }
-
-
-return (
-  <div>
-    <h2>Get All Employee</h2>
-    { auth ?
-      <>
-        <button className="myButton" type="submit" onClick={onSubmit}>Get</button>
-        {
-          userdata.DAT.map(key => {
-            return <h5 key={key.Email + 'unique'}>{`${key.Email} | ${key.FirstName} | ${key.Status}`} <hr/></h5> 
-          })
-        }
-      </>
-      : 'inactive employee'
+  const api = async () => {
+    try {
+      const res = await axios.get(`http://localhost:4000/api/employee/employees`);
+      setUserdata({DAT: res.data.Items});
+    } catch (err) {
+      console.log('there was an error' + err);
     }
-  </div>
+  }
+
+
+  const onSubmit = e => { api(); }
+
+
+  return (
+    <div>
+      <h2>Get All Employee</h2>
+      { auth ?
+        <>
+          <button className="myButton" type="submit" onClick={onSubmit}>Get</button>
+          <table>
+            <thead>
+            <tr>
+              <th>Email ID</th>
+              <th>Firstname</th>
+              <th>LastName</th>
+              <th>Status</th>
+            </tr>
+            </thead>
+            {
+              userdata.DAT.map(key => {
+                return (
+                  <tbody key={key.Email + 'unique'}>
+                    <tr>
+                      <th>{key.Email}</th>
+                      <th>{key.FirstName}</th>
+                      <th>{key.LastName}</th>
+                      <th>{key.Status}</th>
+                    </tr>
+                  </tbody>
+                )
+              })
+            }
+          </table>
+        </>
+        : 'inactive employee'
+      }
+    </div>
   );
 }
+
 
 export default GetAllusers;

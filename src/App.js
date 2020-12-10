@@ -10,17 +10,18 @@ import { Auth }    from './store/Auth';
 
 
 const App = () => {
-
   return (
     <Auth>
-    <div className="navbar">
-      <UserAuth    />
-      <UserSubmit  />
-      <UpdateUser  />
-      <GetUser     />
+      <div className="navbar">
+        <UserAuth    />
+        <UserSubmit  />
+        <UpdateUser  />
+        <GetUser     />
+        <DeleteUser  /> 
+      </div>
+      <div className='navbar'>
       <GetAllUsers />
-      <DeleteUser  />
-    </div>
+      </div>
     </Auth>
   );
 }
