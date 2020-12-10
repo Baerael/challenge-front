@@ -1,40 +1,34 @@
-import React, { useState } from 'react';
-import axios from 'axios'
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../store/Auth';
+import axios from 'axios';
 
 const DeleteUser = () => {
-const [email, setEmail] = useState('')
-const [token, setToken] = useState('')
+const [email, setEmail] = useState('');
+const [auth, isAuth] = useContext(AuthContext);
 
 const api = async (data) => {
   try {
     const res = await axios.delete(`http://localhost:4000/api/user/${email}`);
   } catch (err) {
-    console.log('there was an error' + err)
+    console.log('there was an error' + err);
   }
 }
 
-const onUserChange = e => { setEmail(e.target.value) }
 
-const onSubmit = e => {
-  api();
-}
-
-const onAuth = () => { setToken ('1337secret86') }
-const onDauth = () => { setToken('badkey') }
+const onUserChange = e => { setEmail(e.target.value); }
+const onSubmit     = e => { api(); }
 
 
 return (
   <div>
-    <h1>Delete Employee</h1>
-    { token == '1337secret86' ?
+    <h2>Delete Employee</h2>
+    { auth ?
       <>
         <input type="text" onChange={onUserChange} value={email} placeholder="email@example.com" /> 
         <button className="myButton" type="submit" onClick={onSubmit} value="Upload">Delete</button>
       </>
-      : ''
+      : 'inactive employee' 
     }
-    <button className="myButton" type="submit" onClick={onAuth} value="Upload">Auth</button>
-    <button className="myButton" type="submit" onClick={onDauth} value="Upload">Dauth</button>
   </div>
   );
 }
