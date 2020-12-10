@@ -1,2 +1,4 @@
 ## CRUD APP Frontend
-minimal ui
+### Authentication
+- Auth is enabled by defualt to submit an active employee
+- Submit employee with 
