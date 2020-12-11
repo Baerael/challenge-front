@@ -19,8 +19,12 @@ const UserAuth = () => {
 
   useEffect(() => {
     if (userdata.Status === 'active') {
+      localStorage.setItem('Status', userdata.Status)
+      localStorage.setItem('Email', userdata.Email)
       isAuth(true);
     } else {
+      localStorage.setItem('Status', userdata.Status)
+      localStorage.setItem('Email', userdata.Email)
       isAuth(false);
     }
   });

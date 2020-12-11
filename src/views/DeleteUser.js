@@ -8,7 +8,13 @@ const DeleteUser = () => {
 
   const api = async (data) => {
     try {
-      const res = await axios.delete(`http://localhost:4000/api/employee/${email}`);
+      const res = await axios.delete(`http://localhost:4000/api/employee/${email}`, {
+        data: {
+          Email: localStorage.getItem('Email'),
+          Status: localStorage.getItem('Status'),
+      }})
+
+      //{auth: localStorage.getItem('Status'), Email: localStorage.getItem('Email')});
     } catch (err) {
       console.log('there was an error' + err);
     }
