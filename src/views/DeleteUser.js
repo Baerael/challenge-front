@@ -7,12 +7,13 @@ const DeleteUser = () => {
   const [auth, isAuth] = useContext(AuthContext);
 
   const api = async (data) => {
+    console.log('delte')
     try {
       const res = await axios.delete(`http://localhost:4000/api/employee/${email}`, {
         data: {
           Email: localStorage.getItem('Email'),
           Status: localStorage.getItem('Status'),
-      }})
+      }}, {'Authorization': 'asdf1234'})
 
       //{auth: localStorage.getItem('Status'), Email: localStorage.getItem('Email')});
     } catch (err) {
