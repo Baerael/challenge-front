@@ -1,11 +1,11 @@
 import './App.css';
 import React, { useState, useContext } from 'react';
-import GetUser     from './views/GetUser';
-import GetAllUsers from './views/GetAllUsers';
-import DeleteUser  from './views/DeleteUser';
-import UserSubmit  from './views/UserSubmit';
-import UpdateUser  from './views/UpdateUser';
-import UserAuth    from './views/UserAuth';
+import GetUI     from './views/GetUI';
+import GetAllUI from './views/GetAllUI';
+import DeleteUI  from './views/DeleteUI';
+import SubmitUI  from './views/SubmitUI';
+import UpdateUI  from './views/UpdateUI';
+import AuthUI  from './views/AuthUI';
 import { Auth }    from './store/Auth';
 
 
@@ -13,14 +13,14 @@ const App = () => {
   return (
     <Auth>
       <div className="navbar">
-        <UserAuth    />
-        <UserSubmit  />
-        <UpdateUser  />
-        <GetUser     />
-        <DeleteUser  /> 
+        <AuthUI   />
+        <SubmitUI />
+        <UpdateUI />
+        <GetUI    />
+        <DeleteUI /> 
       </div>
       <div className='navbar'>
-      <GetAllUsers />
+      <GetAllUI />
       </div>
     </Auth>
   );

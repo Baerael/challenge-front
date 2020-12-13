@@ -36,7 +36,7 @@ const UserAuth = () => {
 
   return (
     <div>
-      <h2>Login Employee</h2>
+      <h2>Auth Employee</h2>
       <input type="text" onChange={onUserChange} value={email} placeholder="email@example.com" /> 
       <button className="myButton" type="submit" onClick={onLogin} value="Upload">Login</button>
     </div>
