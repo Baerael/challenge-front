@@ -21,6 +21,10 @@ const GetAllUI = () => {
   }
    
   const onSubmit = e => { api(); }
+  const onClick = e => {
+    console.log('click')
+    console.log(e.target.value)
+  }
 
   
   return (
@@ -42,7 +46,10 @@ const GetAllUI = () => {
               return (
                 <tbody key={obj.ID}>
                   <tr>
-                    <th>{obj.ID} <Btn id={obj.ID} /></th>
+                    <th>
+                      {obj.ID} 
+                      <button onClick={onClick}>delete</button>
+                    </th>
                     <th>{obj.FirstName}</th>
                     <th>{obj.LastName}</th>
                     <th>{obj.Status}</th>
