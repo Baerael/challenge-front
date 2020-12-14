@@ -1,8 +1,7 @@
 import './App.css';
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import GetUI     from './views/GetUI';
 import GetAllUI from './views/GetAllUI';
-import DeleteUI  from './views/DeleteUI';
 import SubmitUI  from './views/SubmitUI';
 import UpdateUI  from './views/UpdateUI';
 import AuthUI  from './views/AuthUI';
@@ -17,7 +16,6 @@ const App = () => {
         <SubmitUI />
         <UpdateUI />
         <GetUI    />
-        <DeleteUI /> 
       </div>
       <div className='navbar'>
       <GetAllUI />

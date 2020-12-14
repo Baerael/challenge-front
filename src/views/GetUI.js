@@ -4,19 +4,18 @@ import axios from 'axios';
 
 const GetUI = () => {
   const [id, setID] = useState('');
-  const [userdata, setUserdata] = useState('');
+  const [data, setData] = useState('');
   const [auth, isAuth] = useContext(AuthContext);
 
   const api = async () => {
     try {
       const res = await axios.get(`http://localhost:4000/api/employee/${id}`);
-      setUserdata(res.data.Item);
+      setData(res.data.Item);
     } catch (err) {
       console.log('there was an error' + err);
     }
   }
 
-  const onChange = e => { setID(e.target.value); }
   const onSubmit = e => { api(); }
 
 
@@ -25,11 +24,11 @@ const GetUI = () => {
       { auth ?
         <>
           <h2>Get Employee</h2>
-          <input type="text" onChange={onChange} value={id} placeholder="UUID" /> 
-          <button className="myButton" type="submit" onClick={onSubmit} value="Upload">Submit</button>
+          <input type="text" onChange={(e) => setID(e.target.value)} value={id} placeholder="UUID" /> 
+          <button className="myButton" type="submit" onClick={onSubmit} >Submit</button>
           {
-            Object.keys(userdata).map((key) => {
-              return <h5 key={key}>{`${key}: ${userdata[key]}`}<hr/></h5>
+            Object.keys(data).map((key) => {
+              return <h5 key={key}>{`${key}: ${data[key]}`}<hr/></h5>
             })
           }
         </>

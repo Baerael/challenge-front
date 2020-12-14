@@ -4,15 +4,15 @@ import axios from 'axios';
 
 
 const UpdateUI = () => {
-  const [id, setID] = useState('');
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
+  const [id, setID]                       = useState('');
+  const [firstname, setFirstname]         = useState('');
+  const [lastname, setLastname]           = useState('');
   const [middleinitial, setMiddleinitial] = useState('');
-  const [dob, setDOB] = useState('');
-  const [doe, setDOE] = useState('');
-  const [status, setStatus] = useState('active');
-  const [toggle, setToggle] = useState(false);
-  const [auth, isAuth] = useContext(AuthContext);
+  const [dob, setDOB]                     = useState('');
+  const [doe, setDOE]                     = useState('');
+  const [status, setStatus]               = useState('active');
+  const [toggle, setToggle]               = useState(false);
+  const [auth, isAuth]                    = useContext(AuthContext);
 
 
   const updateAPI = async (data) => {
@@ -26,7 +26,7 @@ const UpdateUI = () => {
 
   const api = async (data) => {
     try {
-      const res = await axios.get(`http://localhost:4000/api/employees/${id}`, data);
+      const res = await axios.get(`http://localhost:4000/api/employee/${id}`, data);
       setFirstname    (res.data.Item.FirstName);
       setLastname     (res.data.Item.LastName);
       setMiddleinitial(res.data.Item.MiddleInitial);
@@ -38,27 +38,8 @@ const UpdateUI = () => {
   }
 
 
-  const onIDChange        = e => { setID        (e.target.value); }
-  const onFirstNameChange    = e => { setFirstname    (e.target.value); }
-  const onLastNameChange     = e => { setLastname     (e.target.value); }
-  const onMiddleIntialChange = e => { setMiddleinitial(e.target.value); }
-  const onDobChange          = e => { setDOB          (e.target.value); }
-  const onDoeChange          = e => { setDOE          (e.target.value); }
-  const onStatusChange       = e => { setStatus       (e.target.value); }
-
-
-  const onSubmit = e => {
-    e.preventDefault();
-    const data = {
-      id: id
-    }
-
-    api(data);
-  }
-
-
   const onUpdate = e => {
-    const data = {
+    updateAPI({
       ID:               id,
       FirstName:        firstname,
       LastName:         lastname,
@@ -66,19 +47,14 @@ const UpdateUI = () => {
       DateOfBirth:      dob,
       DateOfEmployment: doe,
       Status:           status
-    }
-
-    updateAPI(data);
+    });
   }
 
 
+  const onSubmit = e => { api({id: id}); }
   const onToggle = e => {
     setToggle(!toggle)
-    if (toggle) {
-      setStatus('active');
-    } else {
-      setStatus('inactive');
-    }
+    toggle ? setStatus('active') : setStatus('inactive')
   }
 
 
@@ -87,15 +63,15 @@ const UpdateUI = () => {
       { auth ? 
         <>
           <h2>Update employee</h2>
-          <input type="text" onChange={onIDChange} value={id} placeholder="uuid" />
+          <input type="text" onChange={(e) => setID(e.target.value)} value={id} placeholder="uuid" />
           <button className="myButton" type="submit" onClick={onSubmit} value="Upload">Get User</button> <br/>           
-          <input type="text" onChange={onFirstNameChange}    value={firstname}     placeholder="first name"    /> <br/>
-          <input type="text" onChange={onLastNameChange}     value={lastname}      placeholder="last name"     /> <br/>
-          <input type="text" onChange={onMiddleIntialChange} value={middleinitial} placeholder="middle intial" /> <br/>
-          <input type="text" onChange={onDobChange}          value={dob}           placeholder="00/00/0000"    /> <br/>
-          <input type="text" onChange={onDoeChange}          value={doe}           placeholder="00/00/0000"    /> <br/>
-          <input type="text" onChange={onStatusChange} value={status} /> <br/>
-          <button className="myButton" type="submit" onClick={onUpdate} value="Upload">Update</button>
+          <input type="text" onChange={(e) => setFirstname    (e.target.value)} value={firstname}     placeholder="first name"    /> <br/>
+          <input type="text" onChange={(e) => setLastname     (e.target.value)} value={lastname}      placeholder="last name"     /> <br/>
+          <input type="text" onChange={(e) => setMiddleinitial(e.target.value)} value={middleinitial} placeholder="middle intial" /> <br/>
+          <input type="text" onChange={(e) => setDOB          (e.target.value)} value={dob}           placeholder="00/00/0000"    /> <br/>
+          <input type="text" onChange={(e) => setDOE          (e.target.value)} value={doe}           placeholder="00/00/0000"    /> <br/>
+          <input type="text" onChange={(e) => setStatus       (e.target.value)} value={status} /> <br/>
+          <button className="myButton" type="submit" onClick={onUpdate} >Update</button>
           <button className="myButton" onClick={onToggle}>{status}</button>
         </>
         : ''

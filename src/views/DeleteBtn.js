@@ -1,9 +1,7 @@
-import React, { useState, useContext } from 'react';
-import { AuthContext } from '../store/Auth';
+import React from 'react';
 import axios from 'axios';
 
 const DeleteBtn = ({id}) => {
-  const [auth, isAuth] = useContext(AuthContext);
 
   const api = async (data) => {
     try {
@@ -17,8 +15,7 @@ const DeleteBtn = ({id}) => {
   }
 
 
-  const onSubmit   = e => { api(); }
-  const onClick = () => { console.log(id)}
+  const onSubmit = e => { api(); }
 
 
   return (
