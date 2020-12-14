@@ -1,3 +1,4 @@
 ## CRUD APP Frontend
-### Authentication
-- Auth is enabled by defualt to submit employee with status ```active```
+### Update Employee
+- GET  employees
+- POST UUID

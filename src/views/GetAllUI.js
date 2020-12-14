@@ -1,38 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import Btn from './DeleteBtn'
 import axios from 'axios';
 
 
 const GetAllUI = () => {
-  const [data, setData] = useState();
+  const [employees, setEmployees] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [id, setID] = useState();
+  const [id, setID] = useState(null);
 
 
   useEffect(() => {
     const deleteRequest = async () => {
       try {
-        const res = await axios.delete(`http://localhost:4000/api/employee/${id}`, 
+        await axios.delete(`http://localhost:4000/api/employee/${id}`, 
           {headers: {'Authorization': `Basic ${localStorage.getItem('token')}`}
         })
 
-        const newList = data.filter(key => {
+        const newList = employees.filter(key => {
           return key.ID !== id
         })
-        setData(newList)
+        setEmployees(newList)
 
       } catch (err) {
         console.log('there was an error' + err);
       }
     }
-    deleteRequest()
 
+    if (id != null) deleteRequest()
   }, [id])
 
   const api = async () => {
     try {
       const res = await axios.get(`http://localhost:4000/api/employee/employees`);
-      setData(res.data.Items);
+      setEmployees(res.data.Items);
       setIsLoaded(true)
 
     } catch (err) {
@@ -43,16 +42,10 @@ const GetAllUI = () => {
    
   const onSubmit = e => { api(); }
 
-  const deleteEmp = id => {
-    setID(id)
-  }
-
-  
   return (
     <div>
       <>
-        <h2>Get All Employee</h2>
-        <button className="myButton" type="submit" onClick={onSubmit}>Get</button>
+        <button className="myButton" type="submit" onClick={onSubmit}>Get all</button>
         <table>
           <thead>
           <tr>
@@ -64,17 +57,17 @@ const GetAllUI = () => {
           </tr>
           </thead>
           { isLoaded ?
-            data.map(obj => {
+            employees.map(emp => {
               return (
-                <tbody key={obj.ID}>
+                <tbody key={emp.ID}>
                   <tr>
-                    <th>{obj.ID}</th>
-                    <th>{obj.FirstName}</th>
-                    <th>{obj.LastName}</th>
-                    <th>{obj.Status}</th>
+                    <th>{emp.ID}</th>
+                    <th>{emp.FirstName}</th>
+                    <th>{emp.LastName}</th>
+                    <th>{emp.Status}</th>
                     <th>
                       <button 
-                        onClick={() => setID(obj.ID)} 
+                        onClick={() => setID(emp.ID)} 
                         className='myButton'
                       >
                         Delete
@@ -84,7 +77,7 @@ const GetAllUI = () => {
                 </tbody>
               )
             })
-            : <></>
+            : <>empty</>
           }
         </table>
       </>
